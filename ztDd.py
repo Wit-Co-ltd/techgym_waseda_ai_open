@@ -15,7 +15,6 @@ def get_random_location():
 # ChatGPTモデルを使用してメッセージを送信し、応答を取得する関数を定義します
 def chat_with_openai(location):
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content":
                 "あなたは地理に関する専門家です。"
@@ -25,6 +24,7 @@ def chat_with_openai(location):
                 "情報の正確性は担保し、ユーモアを交えて解答してください"},
             {"role": "user", "content": location}
         ],
+        model="gpt-4",
         temperature=0
     )
     return response.choices[0].message.content
